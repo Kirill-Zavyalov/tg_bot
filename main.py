@@ -3,12 +3,14 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.filters import CommandStart
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, WebAppInfo
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 TOKEN = os.getenv("TOKEN")
 MINI_APP_URL = os.getenv("MINI_APP_URL")
+
+if not TOKEN:
+    raise ValueError("TOKEN не задано в Amvera")
+if not MINI_APP_URL:
+    raise ValueError("MINI_APP_URL не задано в Amvera")
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
